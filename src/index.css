@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Product Dashboard Utilities
+   These ensure your "Standard Tailwind" version looks like high-end Shadcn.
+───────────────────────────────────────────────────────────────────────────── */
+
+@utility inventory-card {
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--card));
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+    transform: translateY(-2px);
+  }
+}
+
+@utility badge-custom {
+  display: inline-flex;
+  items-center: center;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.2s;
+}
+
+@utility auth-input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+  outline: none;
+  transition: all 0.2s;
+
+  &::placeholder { color: hsl(var(--muted-foreground)); }
+  &:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2);
+  }
+}
+
+@utility page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@utility page-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+@utility page-subtitle {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.25rem;
+}
+
+@utility stat-card {
+  border-radius: 1rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  background-color: hsl(var(--card));
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.15), 0 0 0 1px hsl(var(--primary) / 0.15);
+    transform: translateY(-3px);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+}
+
+@utility dashboard-glass {
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border) / 0.4);
+  background: linear-gradient(135deg, hsl(var(--card) / 0.9), hsl(var(--card) / 0.7));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px -4px rgb(0 0 0 / 0.08), inset 0 1px 0 hsl(var(--foreground) / 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: 0 12px 32px -6px rgb(0 0 0 / 0.12), inset 0 1px 0 hsl(var(--foreground) / 0.06);
+    transform: translateY(-2px);
+  }
+}
+
+@utility metric-card {
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border) / 0.4);
+  background-color: hsl(var(--card));
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, hsl(var(--primary) / 0.03));
+    pointer-events: none;
+  }
+
+  &:hover {
+    box-shadow: 0 16px 36px -8px rgb(0 0 0 / 0.12);
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.25);
+  }
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--primary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility hero-gradient {
+  background: linear-gradient(135deg,
+      hsl(var(--primary) / 0.08) 0%,
+      hsl(var(--background)) 40%,
+      hsl(221 83% 60% / 0.05) 100%);
+}
+
+/* ── Theme tokens ────────────────────────────────────────────────────────── */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/* ── CSS Variables ───────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --background: 210 20% 98%; /* Slightly grayish for professional look */
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Pure OLED Black */
+    --foreground: 210 40% 98%;
+    --card: 0 0% 2%; /* Extremely subtle off-black for card depth */
+    --card-foreground: 210 40% 98%;
+    --border: 0 0% 12%; /* Dark subtle border */
+    --primary: 217.2 91.2% 59.8%;
+  }
+
+  * { border-color: hsl(var(--border)); }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* ── Custom Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
