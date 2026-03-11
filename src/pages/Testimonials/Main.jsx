@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { useConfirm } from "../../components/ui/ConfirmDialog";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import testimonialService from "../../api/testimonialService";
 import { toast } from 'react-hot-toast';
 import {
@@ -24,10 +21,7 @@ import {
 } from "../../components/ui/avatar";
 
 const Main = () => {
-<<<<<<< HEAD
   const confirm = useConfirm();
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +49,6 @@ const Main = () => {
 
   // 2. Delete Handler
   const handleDelete = async (id) => {
-<<<<<<< HEAD
     const ok = await confirm({
       title: 'Delete Testimonial',
       message: 'This review will be permanently removed.',
@@ -70,16 +63,6 @@ const Main = () => {
     } catch (error) {
       console.error(error);
       toast.error('Failed to delete.');
-=======
-    if (window.confirm("Delete this testimonial?")) {
-      try {
-        await testimonialService.deleteTestimonial(id);
-        setTestimonials(testimonials.filter((t) => t._id !== id));
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to delete");
-      }
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     }
   };
 

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import projectService from '../../api/projectService';
 import { toast } from 'react-hot-toast';
-<<<<<<< HEAD
 import { useConfirm } from '../../components/ui/ConfirmDialog';
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import userService from '../../api/userService';
 import {
   Loader2, ArrowLeft, ChevronDown, ChevronRight, CheckCircle2, Clock,
@@ -24,10 +21,7 @@ import {
 const selectClass = "w-full h-10 px-3 rounded-xl border border-input bg-background text-sm focus:ring-2 focus:ring-primary outline-none transition-all";
 
 const ProjectMonitoring = ({ project, onBack }) => {
-<<<<<<< HEAD
   const confirm = useConfirm();
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [milestones, setMilestones] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -163,7 +157,6 @@ const ProjectMonitoring = ({ project, onBack }) => {
   };
 
   const handleDelete = async (type, ids) => {
-<<<<<<< HEAD
     const ok = await confirm({
       title: `Delete ${type.charAt(0).toUpperCase() + type.slice(1)}`,
       message: `This ${type} will be permanently removed. This cannot be undone.`,
@@ -171,9 +164,6 @@ const ProjectMonitoring = ({ project, onBack }) => {
       confirmLabel: 'Delete',
     });
     if (!ok) return;
-=======
-    if (!window.confirm(`Delete this ${type}?`)) return;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     try {
       const pId = project._id;
       if (type === 'milestone') {
@@ -187,12 +177,8 @@ const ProjectMonitoring = ({ project, onBack }) => {
         await fetchTasks(ids.milestoneId, ids.moduleId);
       }
     } catch (err) {
-<<<<<<< HEAD
       console.error('Delete failed', err);
       toast.error('Failed to delete.');
-=======
-      console.error("Delete failed", err);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     }
   };
 

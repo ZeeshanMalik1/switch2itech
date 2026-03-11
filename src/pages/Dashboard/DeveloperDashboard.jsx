@@ -11,10 +11,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { useAuth } from '../../context/ContextProvider';
 import projectService from '../../api/projectService';
-<<<<<<< HEAD
 import { getDisplayProgress } from '../../utils/projectProgress';
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 const statusBadge = (status) => {
     const map = {
@@ -147,11 +144,7 @@ const DeveloperDashboard = () => {
     const taskCompletionPct = allTasks.length > 0 ? Math.round((doneTasks / allTasks.length) * 100) : 0;
 
     return (
-<<<<<<< HEAD
         <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8 animate-in fade-in duration-400">
-=======
-        <div className="min-h-screen bg-background p-6 md:p-8 space-y-8 animate-in fade-in duration-400">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
             {/* ── Hero Header ────────────────────────────────────────────── */}
             <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card">
@@ -235,11 +228,7 @@ const DeveloperDashboard = () => {
 
                 <div className="space-y-3">
                     {projects.map(project => {
-<<<<<<< HEAD
                         const progress = getDisplayProgress(project);
-=======
-                        const progress = project.progress || 0;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                         const isExpanded = expandedProject === project._id;
                         const msList = milestonesMap[project._id] || [];
                         const myTasks = tasksMap[project._id] || [];

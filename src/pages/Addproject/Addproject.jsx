@@ -4,31 +4,21 @@ import userService from "../../api/userService";
 import {
   Send, Layout, Tag, AlignLeft, Loader2, AlertCircle,
   CheckCircle2, Calendar, DollarSign, Flag, Image as ImageIcon,
-<<<<<<< HEAD
   Video, Plus, Trash2, HelpCircle, Users, X, ArrowLeft
-=======
-  Video, Plus, Trash2, HelpCircle, Users, X
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Badge } from "../../components/ui/badge";
 import { useAuth } from "../../context/ContextProvider";
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 const selectClass =
   "w-full h-10 px-3 rounded-xl border border-input bg-background text-sm focus:ring-2 focus:ring-primary outline-none transition-all";
 
 const Addproject = ({ onSuccess, initialData }) => {
   const { role } = useAuth();
-<<<<<<< HEAD
   const navigate = useNavigate();
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
   const [allUsers, setAllUsers] = useState([]);
@@ -167,10 +157,7 @@ const Addproject = ({ onSuccess, initialData }) => {
           setSelectedManager(""); setSelectedDevs([]); setSelectedClients([]);
         }
         if (onSuccess) onSuccess();
-<<<<<<< HEAD
         else navigate(-1); // Default router back
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       }
     } catch (err) {
       setStatus({ type: "error", message: err.response?.data?.message || "Something went wrong!" });
@@ -185,7 +172,6 @@ const Addproject = ({ onSuccess, initialData }) => {
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-background p-2 transition-colors duration-300">
-<<<<<<< HEAD
 
       {/* Back Navigation */}
       <div className="mb-6 flex">
@@ -194,8 +180,6 @@ const Addproject = ({ onSuccess, initialData }) => {
         </Button>
       </div>
 
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-foreground tracking-tight">{initialData ? 'Edit Project' : 'New Project'}</h2>
         <p className="text-muted-foreground text-sm mt-1">{initialData ? 'Update the selected project configuration logic.' : 'Fill in the details below to provision a new project in the ERP system.'}</p>

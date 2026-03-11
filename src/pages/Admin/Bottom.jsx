@@ -69,7 +69,6 @@ const Bottom = () => (
     </div>
 
     {/* Table */}
-<<<<<<< HEAD
     <div className="overflow-x-hidden sm:overflow-x-auto">
       <table className="w-full table-fixed sm:table-auto text-left">
         <thead>
@@ -86,24 +85,6 @@ const Bottom = () => (
               <Users size={11} className="inline mr-1" />Team
             </th>
             <th className="px-2 sm:px-5 py-4" />
-=======
-    <div className="overflow-x-auto">
-      <table className="w-full text-left">
-        <thead>
-          <tr className="text-[10px] font-black uppercase tracking-[0.18em] text-muted-foreground/40 border-b border-border/20">
-            <th className="px-7 py-4">Project</th>
-            <th className="px-5 py-4 hidden md:table-cell">Stakeholder</th>
-            <th className="px-5 py-4">Progress</th>
-            <th className="px-5 py-4 hidden sm:table-cell">Priority</th>
-            <th className="px-5 py-4 hidden lg:table-cell">Status</th>
-            <th className="px-5 py-4 hidden lg:table-cell">
-              <CalendarDays size={11} className="inline mr-1" />Deadline
-            </th>
-            <th className="px-5 py-4 text-center hidden md:table-cell">
-              <Users size={11} className="inline mr-1" />Team
-            </th>
-            <th className="px-5 py-4" />
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
           </tr>
         </thead>
         <tbody className="divide-y divide-border/20">
@@ -111,7 +92,6 @@ const Bottom = () => (
             <tr key={index} className="group hover:bg-primary/2 transition-colors duration-150">
 
               {/* Project */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-7 py-5">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-violet-500/20 border border-border/40 flex items-center justify-center text-xs font-black text-primary flex-shrink-0">
@@ -119,37 +99,19 @@ const Bottom = () => (
                   </div>
                   <div className="min-w-0">
                     <p className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate">{project.name}</p>
-=======
-              <td className="px-7 py-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-violet-500/20 border border-border/40 flex items-center justify-center text-xs font-black text-primary flex-shrink-0">
-                    {project.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{project.name}</p>
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                     <p className="text-[11px] text-muted-foreground/50 mt-0.5 font-medium">{project.ref}</p>
                   </div>
                 </div>
               </td>
 
               {/* Client */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5 hidden md:table-cell">
-=======
-              <td className="px-5 py-5 hidden md:table-cell">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <span className="text-sm font-semibold text-muted-foreground">{project.client}</span>
               </td>
 
               {/* Progress */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5">
                 <div className="w-20 sm:w-28 space-y-1.5">
-=======
-              <td className="px-5 py-5">
-                <div className="w-28 space-y-1.5">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                   <div className="flex justify-between text-[10px] font-bold text-muted-foreground">
                     <span>Done</span>
                     <span className="text-foreground tabular-nums">{project.progress}%</span>
@@ -164,22 +126,14 @@ const Bottom = () => (
               </td>
 
               {/* Priority */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5 hidden sm:table-cell">
-=======
-              <td className="px-5 py-5 hidden sm:table-cell">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <span className={`text-[10px] font-black uppercase tracking-tight px-2.5 py-1 rounded-lg border ${project.priority.color}`}>
                   {project.priority.label}
                 </span>
               </td>
 
               {/* Status */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5 hidden lg:table-cell">
-=======
-              <td className="px-5 py-5 hidden lg:table-cell">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <div className="flex items-center gap-2">
                   <div className={`w-1.5 h-1.5 rounded-full ${project.status.dot}`} />
                   <span className={`text-xs font-bold ${project.status.text}`}>{project.status.label}</span>
@@ -187,20 +141,12 @@ const Bottom = () => (
               </td>
 
               {/* Deadline */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5 hidden lg:table-cell">
-=======
-              <td className="px-5 py-5 hidden lg:table-cell">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <span className="text-xs text-muted-foreground font-medium">{project.deadline}</span>
               </td>
 
               {/* Team */}
-<<<<<<< HEAD
               <td className="px-3 sm:px-5 py-5 hidden md:table-cell">
-=======
-              <td className="px-5 py-5 hidden md:table-cell">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <div className="flex items-center justify-center -space-x-2">
                   {project.team.map((img, i) => (
                     <Avatar key={i} className="w-7 h-7 border-2 border-card ring-1 ring-border/30">
@@ -217,11 +163,7 @@ const Bottom = () => (
               </td>
 
               {/* Action */}
-<<<<<<< HEAD
               <td className="px-2 sm:px-5 py-5">
-=======
-              <td className="px-5 py-5">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 <button className="p-1.5 rounded-lg hover:bg-primary/10 hover:text-primary text-muted-foreground/40 transition-colors opacity-0 group-hover:opacity-100">
                   <MoreHorizontal size={15} />
                 </button>
@@ -234,8 +176,4 @@ const Bottom = () => (
   </div>
 )
 
-<<<<<<< HEAD
 export default Bottom
-=======
-export default Bottom
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768

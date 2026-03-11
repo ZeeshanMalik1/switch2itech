@@ -16,11 +16,8 @@ import { FeatureCard } from "./FeatureCard";
 import { ReviewCard } from "./ReviewCard";
 import { ReviewForm } from "./ReviewForm";
 import testimonialService from "../../api/testimonialService";
-<<<<<<< HEAD
 import productService from "../../api/productService";
 import { useParams, useNavigate } from "react-router-dom";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 const formatReviewDate = (value) => {
   if (!value) return "Recently";
@@ -59,7 +56,6 @@ const fetchProductReviews = async (product) => {
     .map((review) => mapReviewForCard(review, product));
 };
 
-<<<<<<< HEAD
 export default function App({ product: propProduct, onBack }) {
   const { id: paramId } = useParams();
   const navigate = useNavigate();
@@ -68,16 +64,11 @@ export default function App({ product: propProduct, onBack }) {
   const [loading, setLoading] = useState(!propProduct && !!paramId);
 
   const productId = resolveProductId(product) || paramId;
-=======
-export default function App({ product, onBack }) {
-  const productId = resolveProductId(product);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [quantity, setQuantity] = useState(1);
   const [reviewFormOpen, setReviewFormOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-<<<<<<< HEAD
     if (!propProduct && paramId) {
       let isMounted = true;
       setLoading(true);
@@ -95,9 +86,6 @@ export default function App({ product, onBack }) {
 
   useEffect(() => {
     if (!productId || !product) return;
-=======
-    if (!productId) return;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     let ignore = false;
 
     fetchProductReviews(product)
@@ -114,7 +102,6 @@ export default function App({ product, onBack }) {
     };
   }, [product, productId]);
 
-<<<<<<< HEAD
   const handleBack = () => {
     if (onBack) onBack();
     else navigate(-1);
@@ -138,8 +125,6 @@ export default function App({ product, onBack }) {
     );
   }
 
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   // --- MAPPING SCHEMA DATA ---
   const productImages =
     product.image?.length > 0
@@ -193,7 +178,6 @@ export default function App({ product, onBack }) {
     <div className="min-h-screen bg-background">
       {/* Header with Back Button */}
       <header className="border-b border-border bg-card">
-<<<<<<< HEAD
         <div className="mx-auto max-w-7xl px-3 sm:px-6 py-3 sm:py-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2 sm:gap-4 min-w-0">
@@ -205,19 +189,6 @@ export default function App({ product, onBack }) {
                 Back
               </button>
               <h1 className="font-semibold text-base sm:text-2xl text-foreground truncate">
-=======
-        <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={onBack}
-                className="flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-foreground transition-colors hover:bg-muted"
-              >
-                <ArrowLeft className="h-5 w-5" />
-                Back
-              </button>
-              <h1 className="font-semibold text-2xl text-foreground">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 {product.name}
               </h1>
             </div>
@@ -236,21 +207,14 @@ export default function App({ product, onBack }) {
         </div>
       </header>
 
-<<<<<<< HEAD
       <main className="mx-auto max-w-7xl px-3 sm:px-6 py-6 sm:py-12">
         {/* Product Overview Section */}
         <div className="mb-10 sm:mb-16 grid gap-6 sm:gap-12 lg:grid-cols-2">
-=======
-      <main className="mx-auto max-w-7xl px-6 py-12">
-        {/* Product Overview Section */}
-        <div className="mb-16 grid gap-12 lg:grid-cols-2">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
           <div>
             <ProductGallery images={productImages} />
           </div>
 
           <div className="flex flex-col">
-<<<<<<< HEAD
             <div className="mb-2 inline-flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-primary/10 px-3 py-1 text-primary font-medium">
                 {product.category}
@@ -263,20 +227,6 @@ export default function App({ product, onBack }) {
             </div>
 
             <h1 className="mb-4 text-2xl sm:text-4xl font-bold text-foreground leading-tight">
-=======
-            <div className="mb-2 inline-flex items-center gap-2">
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-primary font-medium">
-                {product.category}
-              </span>
-              <div className="flex items-center gap-1">
-                <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                <span>4.9</span>
-                <span className="text-muted-foreground">(Verified Asset)</span>
-              </div>
-            </div>
-
-            <h1 className="mb-4 text-4xl font-bold text-foreground">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               {product.name}
             </h1>
 
@@ -284,7 +234,6 @@ export default function App({ product, onBack }) {
               {product.desc}
             </p>
 
-<<<<<<< HEAD
             <div className="mb-6 rounded-lg bg-card p-4 sm:p-6 border border-border">
               <div className="mb-4 flex flex-wrap items-baseline gap-2 sm:gap-3">
                 <span className="text-muted-foreground line-through text-base sm:text-lg">
@@ -292,15 +241,6 @@ export default function App({ product, onBack }) {
                 </span>
                 <span className="text-primary text-2xl sm:text-3xl font-bold">$199</span>
                 <span className="rounded-full bg-destructive/10 px-2.5 sm:px-3 py-1 text-destructive text-xs sm:text-sm font-bold">
-=======
-            <div className="mb-6 rounded-lg bg-card p-6 border border-border">
-              <div className="mb-4 flex items-baseline gap-3">
-                <span className="text-muted-foreground line-through text-lg">
-                  $299
-                </span>
-                <span className="text-primary text-3xl font-bold">$199</span>
-                <span className="rounded-full bg-destructive/10 px-3 py-1 text-destructive text-sm font-bold">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                   Save $100
                 </span>
               </div>
@@ -322,24 +262,15 @@ export default function App({ product, onBack }) {
                 </div>
               </div>
 
-<<<<<<< HEAD
               <div className="mb-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                 <label htmlFor="quantity" className="font-medium text-foreground text-sm sm:text-base">
-=======
-              <div className="mb-4 flex items-center gap-3">
-                <label htmlFor="quantity" className="font-medium text-foreground">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                   Licenses:
                 </label>
                 <select
                   id="quantity"
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
-<<<<<<< HEAD
                   className="w-full sm:w-auto rounded-lg border border-input px-3 sm:px-4 py-2 bg-background text-foreground outline-none focus:ring-2 focus:ring-ring text-sm"
-=======
-                  className="rounded-lg border border-input px-4 py-2 bg-background text-foreground outline-none focus:ring-2 focus:ring-ring"
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 >
                   <option value={1}>1 License - $199</option>
                   <option value={5}>5 Licenses - $899</option>
@@ -347,11 +278,7 @@ export default function App({ product, onBack }) {
                 </select>
               </div>
 
-<<<<<<< HEAD
               <button className="w-full sm:w-auto sm:min-w-[220px] rounded-lg bg-primary px-5 sm:px-6 py-3.5 sm:py-4 text-primary-foreground font-bold transition-all hover:bg-primary/90 shadow-lg active:scale-95 text-sm sm:text-base">
-=======
-              <button className="w-full md:w-2/3 rounded-lg bg-primary px-6 py-4 text-primary-foreground font-bold transition-all hover:bg-primary/90 shadow-lg active:scale-95">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 Buy {product.name} Now
               </button>
             </div>
@@ -368,11 +295,7 @@ export default function App({ product, onBack }) {
         {/* Features Section */}
         <section className="mb-16">
           <div className="mb-8 text-center">
-<<<<<<< HEAD
             <h2 className="mb-3 text-2xl sm:text-3xl font-bold text-foreground">
-=======
-            <h2 className="mb-3 text-3xl font-bold text-foreground">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               Technical Specifications
             </h2>
             <p className="text-muted-foreground">
@@ -393,15 +316,9 @@ export default function App({ product, onBack }) {
 
         {/* Reviews Section */}
         <section className="mb-16">
-<<<<<<< HEAD
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h2 className="mb-3 text-2xl sm:text-3xl font-bold text-foreground">
-=======
-          <div className="mb-8 flex items-center justify-between">
-            <div>
-              <h2 className="mb-3 text-3xl font-bold text-foreground">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 Customer Reviews
               </h2>
               <p className="text-muted-foreground">
@@ -410,11 +327,7 @@ export default function App({ product, onBack }) {
             </div>
             <button
               onClick={() => setReviewFormOpen(true)}
-<<<<<<< HEAD
               className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-primary px-5 sm:px-6 py-3 text-primary-foreground font-semibold transition-all hover:bg-primary/90 active:scale-95 shadow-md text-sm sm:text-base"
-=======
-              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-primary-foreground font-semibold transition-all hover:bg-primary/90 active:scale-95 shadow-md"
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
             >
               <Plus className="h-5 w-5" />
               Write a Review

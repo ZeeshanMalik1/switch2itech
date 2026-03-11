@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import { useAuth } from '../../context/ContextProvider';
 import { Loader2 } from 'lucide-react';
 import Top from './Top';
@@ -13,10 +9,6 @@ import DeveloperDashboard from '../Dashboard/DeveloperDashboard';
 
 const Overview = () => {
   const { role, loading } = useAuth();
-<<<<<<< HEAD
-=======
-  const [currentView, setCurrentView] = useState('overview');
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
   // Always wait for auth to resolve before rendering anything.
   // This prevents the role being null → Navigate → redirect loop.
@@ -31,23 +23,12 @@ const Overview = () => {
   // Admin: full dashboard
   if (role === 'admin') {
     return (
-<<<<<<< HEAD
       <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8">
         <Top />
         <div className="space-y-8 animate-in fade-in duration-500">
           <Main />
           <Bottom />
         </div>
-=======
-      <div className="min-h-screen bg-background p-8 space-y-8">
-        <Top currentView={currentView} setCurrentView={setCurrentView} />
-        {currentView === 'overview' && (
-          <div className="space-y-8 animate-in fade-in duration-500">
-            <Main />
-            <Bottom />
-          </div>
-        )}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       </div>
     );
   }

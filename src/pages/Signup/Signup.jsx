@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import {
   User, Mail, Lock, Phone, Building, MapPin,
-<<<<<<< HEAD
   Camera, ArrowRight, Loader2, Zap
-=======
-  Camera, ArrowRight, Briefcase, Loader2, Zap
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import authService from "../../api/authService";
 import { useAuth } from "../../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
 import logoUrl from "/Images/Logo.png";
-<<<<<<< HEAD
 import toast from "react-hot-toast";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -58,7 +51,6 @@ const Signup = () => {
     try {
       const response = await authService.register(formData);
       if (response.data.status === "success" || response.data.user) {
-<<<<<<< HEAD
         const payload = response.data?.data || response.data || {};
         const registeredUser = payload?.user || response.data?.user || payload;
         const verificationState = {
@@ -74,14 +66,6 @@ const Signup = () => {
         setRole(null);
         toast.success("Account created! Choose how to verify your identity.");
         navigate("/verify-otp", { state: verificationState });
-=======
-        const userData = response.data.data?.user || response.data.data || response.data.user;
-        setUser(userData);
-        setRole(userData?.role || "user");
-        setAuthenticated(true);
-        localStorage.setItem("user", JSON.stringify(userData));
-        navigate("/profile");
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       }
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong. Please try again.");
@@ -93,14 +77,8 @@ const Signup = () => {
   const fields = [
     { name: "name", type: "text", icon: User, placeholder: "John Doe", label: "Full Name", span: 1 },
     { name: "email", type: "email", icon: Mail, placeholder: "name@example.com", label: "Email Address", span: 1 },
-<<<<<<< HEAD
     { name: "password", type: "password", icon: Lock, placeholder: "••••••••", label: "Password", span: 1 },
     { name: "phoneNo", type: "tel", icon: Phone, placeholder: "Mobile no", label: "Phone Number", span: 1 },
-=======
-    { name: "role", type: "select", icon: Briefcase, placeholder: null, label: "Select Role", span: 1 },
-    { name: "password", type: "password", icon: Lock, placeholder: "••••••••", label: "Password", span: 1 },
-    { name: "phoneNo", type: "tel", icon: Phone, placeholder: "+1 (555) 000-0000", label: "Phone Number", span: 1 },
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     { name: "company", type: "text", icon: Building, placeholder: "Acme Inc.", label: "Company", span: 1 },
     { name: "address", type: "text", icon: MapPin, placeholder: "123 Street, City", label: "Address", span: 2 },
   ];

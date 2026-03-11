@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import productService from "../../api/productService";
 import { toast } from 'react-hot-toast';
 import { useConfirm } from "../../components/ui/ConfirmDialog";
-=======
-import productService from "../../api/productService";
-import { toast } from 'react-hot-toast';
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import {
   Package, Users, Edit3, Trash2, Plus,
   Search, Filter, MoreVertical, AlertCircle,
   Loader2, History, ArrowLeft, BarChart3, ChevronRight,
   TrendingUp, Box, Eye, LayoutGrid, List
 } from "lucide-react";
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Badge } from "../../components/ui/badge";
@@ -25,7 +17,6 @@ import Addproduct from "../Addproduct/Addproduct";
 import Main from "../Product/Main";
 
 const Productpage = () => {
-<<<<<<< HEAD
   const confirm = useConfirm();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,15 +24,6 @@ const Productpage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("All");
   const [layoutStyle, setLayoutStyle] = useState("list");
-=======
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeTab, setActiveTab] = useState("All");
-  const [currentView, setCurrentView] = useState("list");
-  const [layoutStyle, setLayoutStyle] = useState("list");
-  const [selectedProduct, setSelectedProduct] = useState(null);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
   useEffect(() => {
     fetchProducts();
@@ -61,7 +43,6 @@ const Productpage = () => {
   };
 
   const handleDelete = async (id) => {
-<<<<<<< HEAD
     const ok = await confirm({
       title: 'Delete Product',
       message: 'Are you sure you want to delete this product? This action cannot be undone.',
@@ -76,16 +57,6 @@ const Productpage = () => {
     } catch (err) {
       console.error('Failed to delete product:', err);
       toast.error('Failed to delete product.');
-=======
-    if (window.confirm("Are you sure you want to delete this product?")) {
-      try {
-        await productService.deleteProduct(id);
-        setProducts(products.filter(p => p._id !== id));
-      } catch (err) {
-        console.error("Failed to delete product:", err);
-        toast.error("Failed to delete product.");
-      }
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     }
   };
 
@@ -105,45 +76,9 @@ const Productpage = () => {
     return matchesSearch && matchesTab;
   });
 
-<<<<<<< HEAD
 
   return (
     <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8 animate-in fade-in duration-400">
-=======
-  if (currentView === "add" || currentView === "edit") {
-    return (
-      <div className="min-h-screen bg-background p-6 lg:p-10 space-y-6 max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <div className="flex items-center justify-between border-b pb-6">
-          <div className="space-y-1">
-            <h1 className="text-3xl font-extrabold tracking-tight">{currentView === "edit" ? "Edit Asset" : "Create Asset"}</h1>
-            <p className="text-muted-foreground">{currentView === "edit" ? "Modify catalog item properties." : "Provision a new product entry to the catalog ecosystem."}</p>
-          </div>
-          <Button variant="outline" onClick={() => { setCurrentView("list"); setSelectedProduct(null); fetchProducts(); }} className="gap-2 rounded-xl">
-            <ArrowLeft size={16} /> Cancel & Return
-          </Button>
-        </div>
-        <Addproduct
-          initialData={currentView === "edit" ? selectedProduct : null}
-          onSuccess={() => { setCurrentView("list"); setSelectedProduct(null); fetchProducts(); }}
-        />
-      </div>
-    );
-  }
-
-  if (currentView === "view" && selectedProduct) {
-    return (
-      <div className="min-h-screen bg-background w-full">
-        <Main
-          product={selectedProduct}
-          onBack={() => { setCurrentView("list"); setSelectedProduct(null); }}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-background p-6 md:p-8 space-y-8 animate-in fade-in duration-400">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
       {/* Hero Header */}
       <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card">
@@ -152,13 +87,10 @@ const Productpage = () => {
         <div className="relative px-8 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-<<<<<<< HEAD
               <Link to="/" className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary text-muted-foreground hover:bg-muted hover:text-foreground text-[10px] font-black uppercase tracking-widest transition-colors">
                 <ArrowLeft size={12} />
                 Dashboard
               </Link>
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
                 <Box size={12} />
                 Inventory
@@ -170,20 +102,12 @@ const Productpage = () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-<<<<<<< HEAD
             <Button onClick={() => navigate("/add-product")} className="h-11 px-8 rounded-xl font-bold gap-2 shadow-lg shadow-indigo-500/20 bg-gradient-to-r from-indigo-600 to-primary hover:from-primary hover:to-indigo-600 border-0 transition-all">
-=======
-            <Button onClick={() => setCurrentView("add")} className="h-11 px-8 rounded-xl font-bold gap-2 shadow-lg shadow-indigo-500/20 bg-gradient-to-r from-indigo-600 to-primary hover:from-primary hover:to-indigo-600 border-0 transition-all">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               <Plus size={18} /> Create Product
             </Button>
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       {/* SECTION: PERFORMANCE METRICS */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
@@ -319,17 +243,10 @@ const Productpage = () => {
                       </td>
                       <td className="px-6 py-4 text-right">
                         <div className="flex items-center justify-end gap-1.5 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity">
-<<<<<<< HEAD
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10 rounded-lg" onClick={() => navigate(`/admin/products/${product._id}`)} title="View Product">
                             <Eye size={14} />
                           </Button>
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500 hover:bg-blue-500/10 rounded-lg" onClick={() => navigate(`/admin/products/${product._id}/edit`)} title="Edit Product">
-=======
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10 rounded-lg" onClick={() => { setSelectedProduct(product); setCurrentView('view'); }} title="View Product">
-                            <Eye size={14} />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500 hover:bg-blue-500/10 rounded-lg" onClick={() => { setSelectedProduct(product); setCurrentView('edit'); }} title="Edit Product">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                             <Edit3 size={14} />
                           </Button>
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-rose-500 hover:bg-rose-500/10 rounded-lg" onClick={() => handleDelete(product._id)}>
@@ -389,19 +306,11 @@ const Productpage = () => {
                       <span className="text-[10px] font-bold text-muted-foreground whitespace-nowrap">{(product.stock || 0)} Units</span>
                     </div>
                     <div className="flex items-center justify-between pt-4 border-t border-border/40">
-<<<<<<< HEAD
                       <Button variant="ghost" size="sm" className="h-8 gap-1.5 text-xs text-primary hover:bg-primary/10 rounded-lg px-2" onClick={() => navigate(`/admin/products/${product._id}`)}>
                         <Eye size={13} /> View
                       </Button>
                       <div className="flex items-center gap-1">
                         <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500 hover:bg-blue-500/10 rounded-lg" onClick={() => navigate(`/admin/products/${product._id}/edit`)}>
-=======
-                      <Button variant="ghost" size="sm" className="h-8 gap-1.5 text-xs text-primary hover:bg-primary/10 rounded-lg px-2" onClick={() => { setSelectedProduct(product); setCurrentView('view'); }}>
-                        <Eye size={13} /> View
-                      </Button>
-                      <div className="flex items-center gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500 hover:bg-blue-500/10 rounded-lg" onClick={() => { setSelectedProduct(product); setCurrentView('edit'); }}>
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                           <Edit3 size={13} />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 text-rose-500 hover:bg-rose-500/10 rounded-lg" onClick={() => handleDelete(product._id)}>

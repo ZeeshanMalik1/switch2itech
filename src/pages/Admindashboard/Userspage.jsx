@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react"
-<<<<<<< HEAD
 import { Link } from "react-router-dom"
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import userService from "../../api/userService"
 import { toast } from 'react-hot-toast';
 import {
   Users, UserCheck, UserPlus, Search,
-<<<<<<< HEAD
   Trash2, Edit, Shield, Mail, CheckCircle2, XCircle, Download, Check, ArrowLeft
-=======
-  Trash2, Edit, Shield, Mail, CheckCircle2, XCircle, Download, Check
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 } from "lucide-react"
 import { Badge } from "../../components/ui/badge"
 import { Button } from "../../components/ui/button"
@@ -78,11 +71,7 @@ const Userspage = () => {
   )
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8 animate-in fade-in duration-400">
-=======
-    <div className="min-h-screen bg-background p-6 md:p-8 space-y-8 animate-in fade-in duration-400">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
       {/* Hero Header */}
       <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card">
@@ -91,13 +80,10 @@ const Userspage = () => {
         <div className="relative px-8 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-<<<<<<< HEAD
               <Link to="/" className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary text-muted-foreground hover:bg-muted hover:text-foreground text-[10px] font-black uppercase tracking-widest transition-colors">
                 <ArrowLeft size={12} />
                 Dashboard
               </Link>
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-600 text-[10px] font-black uppercase tracking-widest">
                 <Shield size={12} />
                 Access Control
@@ -118,10 +104,6 @@ const Userspage = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       {/* Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s, i) => (
@@ -153,7 +135,6 @@ const Userspage = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
         <div className="md:hidden p-3 space-y-3">
           {loading && filtered.length === 0 ? (
             <div className="px-4 py-10 text-center text-muted-foreground font-bold">
@@ -236,9 +217,6 @@ const Userspage = () => {
         </div>
 
         <div className="hidden md:block overflow-x-auto">
-=======
-        <div className="overflow-x-auto">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-secondary/20 border-b border-border/40 text-[10px] font-black uppercase tracking-[0.16em] text-muted-foreground/80">
@@ -339,8 +317,4 @@ const Userspage = () => {
   )
 }
 
-<<<<<<< HEAD
 export default Userspage
-=======
-export default Userspage
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768

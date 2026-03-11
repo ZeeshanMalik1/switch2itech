@@ -17,15 +17,10 @@ import {
     Dialog, DialogContent, DialogHeader, DialogTitle,
 } from '../../components/ui/dialog';
 import { useAuth } from '../../context/ContextProvider';
-<<<<<<< HEAD
 import { useConfirm } from '../../components/ui/ConfirmDialog';
 import projectService from '../../api/projectService';
 import userService from '../../api/userService';
 import { computeProjectProgress, computeMilestoneWeight } from '../../utils/projectProgress';
-=======
-import projectService from '../../api/projectService';
-import userService from '../../api/userService';
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 const statusColors = {
@@ -138,13 +133,9 @@ const SectionHeader = ({ icon, title, action }) => (
 );
 
 // ── Milestone Card ────────────────────────────────────────────────────────────
-<<<<<<< HEAD
 // onUpdated(updatedMs?)  — called after any status/assignment change
 // onModulesChanged(msId, modules) — informs parent of loaded/updated modules
 const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated, onModulesChanged }) => {
-=======
-const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated }) => {
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     const [expanded, setExpanded] = useState(false);
     const [modules, setModules] = useState([]);
     const [loadingModules, setLoadingModules] = useState(false);
@@ -159,7 +150,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
     const [assignDlg, setAssignDlg] = useState(false);
     const [assignUser, setAssignUser] = useState(ms.assignedTo?._id || ms.assignedTo || '');
 
-<<<<<<< HEAD
     const loadModules = useCallback(async (forceReload = false) => {
         if (modules.length > 0 && !forceReload) return;
         setLoadingModules(true);
@@ -171,17 +161,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
         } catch { setModules([]); }
         finally { setLoadingModules(false); }
     }, [projectId, ms._id, modules.length, onModulesChanged, ms._id]);
-=======
-    const loadModules = useCallback(async () => {
-        if (modules.length > 0) return;
-        setLoadingModules(true);
-        try {
-            const res = await projectService.getModules(projectId, ms._id);
-            setModules(res.data?.data || []);
-        } catch { setModules([]); }
-        finally { setLoadingModules(false); }
-    }, [projectId, ms._id, modules.length]);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
     const toggle = () => {
         setExpanded(p => !p);
@@ -191,12 +170,8 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
     const saveStatus = async () => {
         try {
             await projectService.updateMilestone(projectId, ms._id, { status: newStatus });
-<<<<<<< HEAD
             // Optimistically report updated milestone status to parent
             onUpdated({ ...ms, status: newStatus });
-=======
-            onUpdated();
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
             setEditStatus(false);
         } catch (e) { console.error(e); }
     };
@@ -213,13 +188,9 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
         try {
             await projectService.createModule(projectId, ms._id, modForm);
             const res = await projectService.getModules(projectId, ms._id);
-<<<<<<< HEAD
             const fresh = res.data?.data || [];
             setModules(fresh);
             onModulesChanged?.(ms._id, fresh);
-=======
-            setModules(res.data?.data || []);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
             setAddModDlg(false);
             setModForm({ name: '', description: '', status: 'pending', dueDate: '' });
         } catch (e) { console.error(e); }
@@ -242,7 +213,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
                         )}
                     </div>
                     {ms.description && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{ms.description}</p>}
-<<<<<<< HEAD
                     {/* Milestone progress bar — computed from loaded modules */}
                     {(() => {
                         const msPct = Math.round(computeMilestoneWeight(ms, modules) * 100);
@@ -258,8 +228,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
                             </div>
                         );
                     })()}
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 </div>
 
                 <div className="flex items-center gap-2 flex-shrink-0">
@@ -312,7 +280,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
                             canEdit={canEdit}
                             canAssign={canAssign}
                             allUsers={allUsers}
-<<<<<<< HEAD
                             onUpdated={async () => { await loadModules(true); }}
                             onTasksChanged={(modId, tasks) => {
                                 // Re-report updated modules to parent with embedded tasks
@@ -321,9 +288,6 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
                                 );
                                 onModulesChanged?.(ms._id, withTasks);
                             }}
-=======
-                            onUpdated={() => loadModules()}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                         />
                     ))}
                 </div>
@@ -378,13 +342,9 @@ const MilestoneCard = ({ ms, projectId, canEdit, canAssign, allUsers, onUpdated 
 };
 
 // ── Module Row ────────────────────────────────────────────────────────────────
-<<<<<<< HEAD
 // onTasksChanged(moduleId, tasks) — informs parent about task list changes
 const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, onUpdated, onTasksChanged }) => {
     const confirm = useConfirm();
-=======
-const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, onUpdated }) => {
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     const [tasks, setTasks] = useState([]);
     const [showTasks, setShowTasks] = useState(false);
     const [loadingTasks, setLoadingTasks] = useState(false);
@@ -399,13 +359,9 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
         setLoadingTasks(true);
         try {
             const res = await projectService.getTasks(projectId, milestoneId, mod._id);
-<<<<<<< HEAD
             const loaded = res.data?.data || [];
             setTasks(loaded);
             onTasksChanged?.(mod._id, loaded);
-=======
-            setTasks(res.data?.data || []);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         } catch { setTasks([]); }
         finally { setLoadingTasks(false); }
     };
@@ -418,11 +374,7 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
     const saveStatus = async () => {
         try {
             await projectService.updateModule(projectId, milestoneId, mod._id, { status: newStatus });
-<<<<<<< HEAD
             onUpdated();   // triggers parent to reload modules → lifts up → recompute
-=======
-            onUpdated();
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
             setEditStatus(false);
         } catch (e) { console.error(e); }
     };
@@ -445,7 +397,6 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
     };
 
     const updateTaskStatus = async (task, status) => {
-<<<<<<< HEAD
         // Optimistic UI update
         const updated = tasks.map(t => t._id === task._id ? { ...t, status } : t);
         setTasks(updated);
@@ -473,19 +424,6 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
             const remaining = tasks.filter(x => x._id !== taskId);
             setTasks(remaining);
             onTasksChanged?.(mod._id, remaining);
-=======
-        try {
-            await projectService.updateTask(projectId, milestoneId, mod._id, task._id, { status });
-            await loadTasks();
-        } catch (e) { console.error(e); }
-    };
-
-    const deleteTask = async (taskId) => {
-        if (!window.confirm('Delete this task?')) return;
-        try {
-            await projectService.deleteTask(projectId, milestoneId, mod._id, taskId);
-            setTasks(t => t.filter(x => x._id !== taskId));
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         } catch (e) { console.error(e); }
     };
 
@@ -497,7 +435,6 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
                     {showTasks ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
                 </button>
                 <span className="text-sm font-semibold flex-1 min-w-0 truncate">{mod.name || mod.title}</span>
-<<<<<<< HEAD
                 {/* Module progress bar — computed from loaded tasks */}
                 {tasks.length > 0 && (() => {
                     const done = tasks.filter(t => ['done', 'completed', 'approved'].includes(t.status?.toLowerCase())).length;
@@ -514,8 +451,6 @@ const ModuleRow = ({ mod, projectId, milestoneId, canEdit, canAssign, allUsers, 
                         </div>
                     );
                 })()}
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
                 <div className="flex items-center gap-1.5 flex-shrink-0">
                     {editStatus ? (
@@ -644,10 +579,7 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const { role } = useAuth();
-<<<<<<< HEAD
     const confirm = useConfirm();
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     const clickedProject = location.state?.project || null;
 
     const [project, setProject] = useState(clickedProject);
@@ -656,11 +588,8 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState('');
-<<<<<<< HEAD
     // Computed progress (overrides project.progress in the UI)
     const [liveProgress, setLiveProgress] = useState(null);
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
     // Assign dialog (project-level)
     const [assignDlg, setAssignDlg] = useState(false);
@@ -680,7 +609,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
     const projectImages = getProjectImages(project);
     const primaryImage = projectImages[0];
 
-<<<<<<< HEAD
     // ── Recompute & persist progress ───────────────────────────────────────
     const recomputeProgress = useCallback(async (updatedMilestones) => {
         const msToUse = updatedMilestones ?? milestones;
@@ -696,9 +624,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
     }, [milestones, project, id]);
 
     // ── Fetch data ───────────────────────────────────────────────────────
-=======
-    // ── Fetch data ──────────────────────────────────────────────────────────
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     const fetchProject = useCallback(async () => {
         try {
             const [projRes, msRes] = await Promise.all([
@@ -706,7 +631,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
                 projectService.getMilestones(id),
             ]);
             const apiProject = projRes.data?.data || null;
-<<<<<<< HEAD
             const loadedProject = apiProject ? { ...(clickedProject || {}), ...apiProject } : clickedProject;
             const loadedMilestones = msRes.data?.data || [];
             setProject(loadedProject);
@@ -714,17 +638,12 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
             // Compute initial progress from whatever's loaded
             const initialProgress = computeProjectProgress(loadedMilestones, loadedProject);
             setLiveProgress(initialProgress);
-=======
-            setProject(apiProject ? { ...(clickedProject || {}), ...apiProject } : clickedProject);
-            setMilestones(msRes.data?.data || []);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         } catch (e) {
             setError('Failed to load project.');
             console.error(e);
         }
     }, [id, clickedProject]);
 
-<<<<<<< HEAD
     // Recompute whenever the milestones array changes (task/module status updates)
     useEffect(() => {
         if (milestones.length > 0) {
@@ -733,8 +652,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
         }
     }, [milestones]); // eslint-disable-line
 
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     useEffect(() => {
         const init = async () => {
             setLoading(true);
@@ -798,7 +715,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
         } catch (e) { console.error(e); }
     };
 
-<<<<<<< HEAD
     // ── Go back helper — respects embedded vs routed context ────────────────
     const goBack = () => {
         if (onBackFromProps) {
@@ -820,14 +736,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
         try {
             await projectService.deleteProject(id);
             goBack();
-=======
-    // ── Delete project ───────────────────────────────────────────────────────
-    const deleteProject = async () => {
-        if (!window.confirm(`Delete project "${project?.title}"? This cannot be undone.`)) return;
-        try {
-            await projectService.deleteProject(id);
-            navigate('/projects');
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         } catch (e) { console.error(e); }
     };
 
@@ -842,7 +750,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
         <div className="h-screen w-full flex flex-col items-center justify-center gap-4">
             <AlertCircle size={40} className="text-destructive" />
             <p className="text-muted-foreground font-semibold">{error || 'Project not found.'}</p>
-<<<<<<< HEAD
             <Button variant="outline" onClick={() => {
                 if (onBackFromProps) onBackFromProps();
                 else navigate('/projects');
@@ -852,13 +759,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
 
     // Prefer live computed value; fall back to stored field
     const progress = liveProgress !== null ? liveProgress : (project.progress ?? 0);
-=======
-            <Button variant="outline" onClick={() => navigate('/projects')}>Go Back</Button>
-        </div>
-    );
-
-    const progress = project.progress || 0;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
     return (
         <div className="min-h-screen bg-background overflow-y-auto">
@@ -873,14 +773,7 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
 
                 {/* Back button */}
                 <button
-<<<<<<< HEAD
                     onClick={goBack}
-=======
-                    onClick={() => {
-                        if (onBackFromProps) onBackFromProps();
-                        else navigate(-1);
-                    }}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                     className="absolute top-4 left-6 flex items-center gap-2 text-white/90 hover:text-white bg-black/30 hover:bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-xl text-sm font-semibold transition-all"
                 >
                     <ArrowLeft size={16} /> Back
@@ -916,10 +809,6 @@ const ProjectDetail = ({ projectIdFromProps, onBackFromProps }) => {
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 space-y-8">
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                 {/* Progress Bar */}
                 <div className="space-y-2">
                     <div className="flex justify-between text-xs font-bold uppercase tracking-tighter text-muted-foreground">

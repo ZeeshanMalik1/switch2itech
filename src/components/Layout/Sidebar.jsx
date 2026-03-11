@@ -8,10 +8,7 @@ import {
   LayoutDashboard, Briefcase, Users, BarChart3,
   MessageSquare, Package, LifeBuoy, LogOut,
   PanelLeftClose, PanelLeftOpen, Loader2,
-<<<<<<< HEAD
   Settings, ShieldCheck, DollarSign, Star,
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 } from "lucide-react";
 import { useAuth } from "../../context/ContextProvider";
 import authService from "../../api/authService";
@@ -20,18 +17,11 @@ import logoUrl from "/Images/Logo.png";
 /* ── NavItem must be defined OUTSIDE Sidebar so React doesn't treat it
    as a new component type on every render (which causes full remount,
    logo flicker, and dozens of redundant Logo.png requests). ────────────── */
-<<<<<<< HEAD
 const NavItem = ({ item, isCollapsed, onClick }) => (
   <NavLink
     to={item.path}
     end={item.path === "/"}
     onClick={onClick}
-=======
-const NavItem = ({ item, isCollapsed }) => (
-  <NavLink
-    to={item.path}
-    end={item.path === "/"}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
     className={({ isActive }) =>
       `relative w-full flex items-center px-3.5 py-2.5 rounded-xl transition-all duration-200 group
       ${isActive
@@ -86,7 +76,6 @@ const MAIN_MENU = [
   { icon: Package, label: "Products", path: "/products", roles: ["admin", "manager", "developer", "client", "user"] },
 ];
 
-<<<<<<< HEAD
 const ADMIN_MENU = [
   { icon: Briefcase, label: "Manage Projects", path: "/admin/projects" },
   { icon: Package, label: "Manage Products", path: "/admin/products" },
@@ -99,11 +88,6 @@ const ADMIN_MENU = [
 const SYSTEM_MENU = [{ icon: LifeBuoy, label: "Support", path: "/support" }];
 
 const Sidebar = ({ mobileOpen = false, onMobileClose = () => {} }) => {
-=======
-const SYSTEM_MENU = [{ icon: LifeBuoy, label: "Support", path: "/support" }];
-
-const Sidebar = () => {
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
   const { user, role, loading, setAuthenticated, setUser, setRole } = useAuth();
@@ -123,7 +107,6 @@ const Sidebar = () => {
   };
 
   return (
-<<<<<<< HEAD
     <>
       {mobileOpen && (
         <button
@@ -140,15 +123,6 @@ const Sidebar = () => {
       {/* ── Logo / Header ───────────────────────────────────────── */}
       <div
         className={`h-16 flex items-center border-b border-border transition-all duration-300 ${isCollapsed ? "md:px-0 md:justify-center px-5 justify-between" : "px-5 justify-between"
-=======
-    <div
-      className={`h-screen flex flex-col border-r bg-card border-border shrink-0 transition-all duration-300 ease-in-out z-50 ${isCollapsed ? "w-[68px]" : "w-64"
-        }`}
-    >
-      {/* ── Logo / Header ───────────────────────────────────────── */}
-      <div
-        className={`h-16 flex items-center border-b border-border transition-all duration-300 ${isCollapsed ? "px-0 justify-center" : "px-5 justify-between"
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
           }`}
       >
         <div className="flex items-center gap-2.5 overflow-hidden shrink-0">
@@ -176,11 +150,7 @@ const Sidebar = () => {
           <Button
             variant="ghost"
             size="icon"
-<<<<<<< HEAD
             onClick={() => (window.innerWidth < 768 ? onMobileClose() : setIsCollapsed(true))}
-=======
-            onClick={() => setIsCollapsed(true)}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
             className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-lg shrink-0"
           >
             <PanelLeftClose size={16} />
@@ -191,11 +161,7 @@ const Sidebar = () => {
       {isCollapsed && (
         <button
           onClick={() => setIsCollapsed(false)}
-<<<<<<< HEAD
           className="h-10 w-full items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors border-b border-border hidden md:flex"
-=======
-          className="h-10 w-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors border-b border-border"
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         >
           <PanelLeftOpen size={16} />
         </button>
@@ -211,18 +177,12 @@ const Sidebar = () => {
               </p>
             )}
             <div className="space-y-0.5">
-<<<<<<< HEAD
               {mainMenu.map((item) => (
                 <NavItem key={item.path} item={item} isCollapsed={isCollapsed} onClick={onMobileClose} />
-=======
-              {mainMenu.map((item, i) => (
-                <NavItem key={item.path} item={item} isCollapsed={isCollapsed} />
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               ))}
             </div>
           </div>
 
-<<<<<<< HEAD
           {role === "admin" && (
             <div>
               {!isCollapsed && (
@@ -239,8 +199,6 @@ const Sidebar = () => {
             </div>
           )}
 
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
           <div>
             {!isCollapsed && (
               <p className="px-3.5 mb-2 text-[10px] font-bold text-muted-foreground/50 uppercase tracking-[0.18em]">
@@ -249,11 +207,7 @@ const Sidebar = () => {
             )}
             <div className="space-y-0.5">
               {SYSTEM_MENU.map((item) => (
-<<<<<<< HEAD
                 <NavItem key={item.path} item={item} isCollapsed={isCollapsed} onClick={onMobileClose} />
-=======
-                <NavItem key={item.path} item={item} isCollapsed={isCollapsed} />
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               ))}
             </div>
           </div>
@@ -270,10 +224,7 @@ const Sidebar = () => {
           <div className={`flex items-center ${isCollapsed ? "justify-center" : "gap-2"}`}>
             <NavLink
               to="/profile"
-<<<<<<< HEAD
               onClick={onMobileClose}
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               className={({ isActive }) =>
                 `flex flex-1 items-center gap-2.5 px-2 py-2 rounded-xl transition-all duration-200 overflow-hidden min-w-0
                 ${isActive
@@ -320,12 +271,8 @@ const Sidebar = () => {
           </div>
         )}
       </div>
-<<<<<<< HEAD
       </aside>
     </>
-=======
-    </div>
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   );
 };
 

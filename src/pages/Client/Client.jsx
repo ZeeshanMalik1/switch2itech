@@ -6,16 +6,11 @@ import {
 import { Badge } from "../../components/ui/badge"
 import { Button } from "../../components/ui/button"
 import { Input } from "../../components/ui/input"
-<<<<<<< HEAD
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/ContextProvider"
 
 const Userspage = () => {
   const { role } = useAuth()
-=======
-
-const Userspage = () => {
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
@@ -53,13 +48,8 @@ const Userspage = () => {
   )
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8 animate-in fade-in duration-400">
 
-=======
-    <div className="min-h-screen bg-background p-6 md:p-8 space-y-8 animate-in fade-in duration-400">
-      
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       {/* Header Section */}
       <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card">
         <div className="relative px-8 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -70,7 +60,6 @@ const Userspage = () => {
             <h1 className="text-3xl font-extrabold tracking-tight">Client Management</h1>
             <p className="text-sm text-muted-foreground mt-1">Client information directory.</p>
           </div>
-<<<<<<< HEAD
           {role === "admin" && (
             <Link
               to="/admin/users"
@@ -81,14 +70,6 @@ const Userspage = () => {
           )}
         </div>
       </div>
-=======
-          <Button className="rounded-xl font-bold gap-2 shadow-lg shadow-primary/20" disabled>
-            <UserPlus size={18} /> Client Only View
-          </Button>
-        </div>
-      </div>
-
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       {/* Metrics */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s, i) => (
@@ -107,13 +88,8 @@ const Userspage = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-5 border-b border-border/40">
           <div className="relative w-full md:w-96">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={14} />
-<<<<<<< HEAD
             <Input
               placeholder="Search by name, email, or company..."
-=======
-            <Input 
-              placeholder="Search by name, email, or company..." 
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               className="pl-9 h-11 rounded-xl bg-muted/30 border-none"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
@@ -121,22 +97,12 @@ const Userspage = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
         <div className="overflow-x-hidden">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-muted/30 border-b border-border/40 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                 <th className="px-6 py-4 font-black">Name</th>
                 <th className="px-6 py-4 font-black">Activeness</th>
-=======
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="bg-muted/30 border-b border-border/40 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                <th className="px-6 py-4 font-black">Member Profile</th>
-                <th className="px-6 py-4 font-black">Company</th>
-                <th className="px-6 py-4 font-black">Status</th>
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               </tr>
             </thead>
             <tbody className="divide-y divide-border/30">
@@ -147,30 +113,14 @@ const Userspage = () => {
                       <div className="h-10 w-10 rounded-xl border-2 border-border/40 overflow-hidden shadow-sm">
                         <img src={user.profile || `https://i.pravatar.cc/150?u=${user._id}`} alt="" />
                       </div>
-<<<<<<< HEAD
                       <div className="flex flex-col min-w-0">
                         <span className="font-bold text-sm text-foreground">{user.name}</span>
-=======
-                      <div className="flex flex-col">
-                        <span className="font-bold text-sm text-foreground">{user.name}</span>
-                        <span className="text-[11px] text-muted-foreground font-medium">{user.email}</span>
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-<<<<<<< HEAD
                     <Badge className={`px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md border ${user.status === "Inactive" ? "bg-red-500/10 text-red-600 border-red-500/20" : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"}`}>
                       {user.status || "Active"}
-=======
-                    <span className="text-sm font-medium text-foreground">
-                      {user.company || "N/A"}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <Badge className={`px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md border ${user.status === "Inactive" ? "bg-red-500/10 text-red-600 border-red-500/20" : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"}`}>
-                       {user.status || "Active"}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                     </Badge>
                   </td>
                 </tr>

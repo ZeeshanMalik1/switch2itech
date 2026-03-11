@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/ContextProvider";
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 import productService from "../../api/productService";
 import {
   Search,
@@ -21,10 +18,7 @@ import Main from "./Main";
 import { Button } from "../../components/ui/button";
 
 const ProductDashboard = () => {
-<<<<<<< HEAD
   const { role } = useAuth();
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -95,11 +89,7 @@ const ProductDashboard = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-background p-1 sm:p-4 md:p-10 font-sans">
-=======
-    <div className="min-h-screen bg-background p-6 md:p-10 font-sans">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
       <div className="max-w-7xl mx-auto">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 border-b border-border pb-8">
@@ -107,7 +97,6 @@ const ProductDashboard = () => {
             <h1 className="text-3xl font-black tracking-tighter text-foreground">
               Digital Inventory
             </h1>
-<<<<<<< HEAD
           </div>
 
           <div className="w-full md:w-auto flex flex-wrap md:flex-nowrap items-center gap-2 sm:gap-3">
@@ -121,16 +110,6 @@ const ProductDashboard = () => {
             )}
             {/* SEARCH */}
             <div className="relative min-w-0 flex-1 w-full sm:w-auto">
-=======
-            {/* <p className="text-muted-foreground text-sm font-medium">
-               {filteredProducts.length} Products
-            </p> */}
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* SEARCH */}
-            <div className="relative">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 size={16}
@@ -140,36 +119,20 @@ const ProductDashboard = () => {
                 placeholder="Search inventory..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-<<<<<<< HEAD
                 className="pl-10 pr-4 py-2 bg-card border border-border rounded-xl outline-none focus:ring-2 focus:ring-primary/20 w-full sm:w-56 md:w-64 transition-all text-sm"
-=======
-                className="pl-10 pr-4 py-2 bg-card border border-border rounded-xl outline-none focus:ring-2 focus:ring-primary/20 w-full md:w-64 transition-all"
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               />
             </div>
 
             {/* --- VIEW TOGGLE --- */}
-<<<<<<< HEAD
             <div className="flex bg-muted/50 p-1 rounded-lg border border-border shadow-sm shrink-0">
-=======
-            <div className="flex bg-muted/50 p-1 rounded-lg border border-border shadow-sm">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               <Button
                 variant={viewMode === "grid" ? "default" : "ghost"} // Change 'secondary' to 'default'
                 size="icon"
                 onClick={() => setViewMode("grid")}
-<<<<<<< HEAD
                 className={`h-8 w-8 transition-all ${viewMode === "grid"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:bg-background"
                   }`}
-=======
-                className={`h-8 w-8 transition-all ${
-                  viewMode === "grid"
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:bg-background"
-                }`}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               >
                 <LayoutGrid size={16} />
               </Button>
@@ -178,18 +141,10 @@ const ProductDashboard = () => {
                 variant={viewMode === "list" ? "default" : "ghost"} // Change 'secondary' to 'default'
                 size="icon"
                 onClick={() => setViewMode("list")}
-<<<<<<< HEAD
                 className={`h-8 w-8 transition-all ${viewMode === "list"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:bg-background"
                   }`}
-=======
-                className={`h-8 w-8 transition-all ${
-                  viewMode === "list"
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:bg-background"
-                }`}
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
               >
                 <List size={16} />
               </Button>

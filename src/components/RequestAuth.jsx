@@ -2,7 +2,6 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/ContextProvider';
 import { Loader2 } from 'lucide-react';
-<<<<<<< HEAD
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -18,13 +17,6 @@ const RequestAuth = () => {
   const { authenticated, pendingVerification, loading } = useAuth();
   const location = useLocation();
 
-=======
-
-const RequestAuth = () => {
-  const { authenticated, loading } = useAuth();
-
-  // While session is being verified, show a spinner — prevents flickering on /login
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   if (loading) {
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-background gap-3">
@@ -34,7 +26,6 @@ const RequestAuth = () => {
     );
   }
 
-<<<<<<< HEAD
   // Fully authenticated users have no business on login/signup
   if (authenticated) return <Navigate to="/" replace />;
 
@@ -45,10 +36,3 @@ const RequestAuth = () => {
 };
 
 export default RequestAuth;
-=======
-  // If already authenticated, redirect to dashboard — otherwise show the auth page
-  return authenticated ? <Navigate to="/profile" replace /> : <Outlet />;
-};
-
-export default RequestAuth;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768

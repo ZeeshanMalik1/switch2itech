@@ -14,10 +14,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../componen
 import { useAuth } from '../../context/ContextProvider';
 import projectService from '../../api/projectService';
 import userService from '../../api/userService';
-<<<<<<< HEAD
 import { getDisplayProgress } from '../../utils/projectProgress';
-=======
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
 const statusBadge = (status) => {
     const map = {
@@ -166,11 +163,7 @@ const ManagerDashboard = () => {
     const greeting = now.getHours() < 12 ? 'Good Morning' : now.getHours() < 17 ? 'Good Afternoon' : 'Good Evening';
 
     return (
-<<<<<<< HEAD
         <div className="min-h-screen bg-background p-1 sm:p-4 md:p-8 space-y-8 animate-in fade-in duration-400">
-=======
-        <div className="min-h-screen bg-background p-6 md:p-8 space-y-8 animate-in fade-in duration-400">
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 
             {/* ── Hero Header ────────────────────────────────────────────── */}
             <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card">
@@ -251,11 +244,7 @@ const ManagerDashboard = () => {
 
                 <div className="space-y-3">
                     {filtered.map(project => {
-<<<<<<< HEAD
                         const progress = getDisplayProgress(project);
-=======
-                        const progress = project.progress || 0;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
                         const isExpanded = expandedProject === project._id;
                         const projectMilestones = milestones[project._id] || [];
 

@@ -4,7 +4,6 @@ import authService from "../api/authService";
 
 export const userContext = createContext();
 
-<<<<<<< HEAD
 /**
  * Returns true only when BOTH email AND phone (if registered) are verified.
  * This is the single source of truth for "fully verified" across the app.
@@ -36,19 +35,12 @@ export const ContextProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   // true  → user has a valid JWT but account is NOT yet verified
   const [pendingVerification, setPendingVerification] = useState(false);
-=======
-export const ContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [role, setRole] = useState(null);
-  const [authenticated, setAuthenticated] = useState(false);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const verifyUser = async () => {
       try {
         const response = await authService.getCurrentUser();
-<<<<<<< HEAD
         const ok = response.data && (response.data.status === "success" || response.data.user);
 
         if (ok) {
@@ -84,21 +76,10 @@ export const ContextProvider = ({ children }) => {
           setAuthenticated(false);
           setPendingVerification(false);
         }
-      } catch {
+      } catch (error) {
+        console.error(error);
         setAuthenticated(false);
         setPendingVerification(false);
-=======
-        if (response.data && (response.data.status === "success" || response.data.user)) {
-          const userData = response.data.data?.user || response.data.data || response.data.user;
-          setUser(userData);
-          setRole(userData?.role || 'user');
-          setAuthenticated(true);
-        } else {
-          setAuthenticated(false);
-        }
-      } catch (error) { console.error(error);
-        setAuthenticated(false);
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
         setRole(null);
         setUser(null);
       } finally {
@@ -109,7 +90,6 @@ export const ContextProvider = ({ children }) => {
     verifyUser();
   }, []);
 
-<<<<<<< HEAD
   const value = {
     user,
     role,
@@ -123,13 +103,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;
-=======
-  return (
-    <userContext.Provider value={{ user, role, authenticated, loading, setAuthenticated, setUser, setRole }}>
-      {children}
-    </userContext.Provider>
-  );
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
 };
 
 export const RoleGuard = ({ children, allowedRoles, fallback = null }) => {
@@ -154,8 +127,4 @@ export const useAuth = () => {
   return context;
 };
 
-<<<<<<< HEAD
 export default ContextProvider;
-=======
-export default ContextProvider;
->>>>>>> 2a59767ebc86eff8928b6b4231a5b60506f46768
