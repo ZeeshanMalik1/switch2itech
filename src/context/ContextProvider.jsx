@@ -39,6 +39,15 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const verifyUser = async () => {
+      // Prevent unconditional 401 error on initial load if no user token exists
+      const storedUser = localStorage.getItem("user");
+      if (!storedUser) {
+        setAuthenticated(false);
+        setPendingVerification(false);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await authService.getCurrentUser();
         const ok = response.data && (response.data.status === "success" || response.data.user);
@@ -78,6 +87,9 @@ export const ContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.error(error);
+        if (error.response && error.response.status === 401) {
+          localStorage.removeItem("user");
+        }
         setAuthenticated(false);
         setPendingVerification(false);
         setRole(null);
